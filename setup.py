@@ -8,11 +8,11 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-libtech-emailuser',
-    version='0.2',
+    version='0.2.1',
     packages=['emailuser'],
     include_package_data=True,
     license='BSD License',
-    description='Use emailaddress as username in Django +1.5',
+    description='Use emailaddress as username in Django 1.8',
     long_description=README,
     url='https://github.com/Liberationtech/django-libtech-emailuser',
     author='Oivvio Polite',
