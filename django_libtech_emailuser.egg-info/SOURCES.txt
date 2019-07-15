@@ -10,3 +10,6 @@ emailuser/forms.py
 emailuser/models.py
 emailuser/tests.py
 emailuser/views.py
+emailuser/migrations/0001_initial.py
+emailuser/migrations/__init__.py
+emailuser/migrations/django_migration.py
