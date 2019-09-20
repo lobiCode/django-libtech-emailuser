@@ -14,6 +14,7 @@ from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
+from django.conf.urls import url
 from emailuser.forms import EmailUserChangeForm
 from emailuser.forms import EmailUserCreationForm
 from emailuser.models import EmailUser
@@ -66,11 +67,13 @@ class EmailUserAdmin(admin.ModelAdmin):
         return super(EmailUserAdmin, self).get_form(request, obj, **defaults)
 
     def get_urls(self):
-        from django.conf.urls import patterns
-        return patterns('',
-                        (r'^(\d+)/password/$',
-                         self.admin_site.admin_view(self.user_change_password))
-                        ) + super(EmailUserAdmin, self).get_urls()
+        return [
+            url(
+                r'^(.+)/password/$',
+                self.admin_site.admin_view(self.user_change_password),
+                name='auth_user_password_change',
+            ),
+        ] + super(EmailUserAdmin, self).get_urls()
 
     @sensitive_post_parameters_m
     @csrf_protect_m

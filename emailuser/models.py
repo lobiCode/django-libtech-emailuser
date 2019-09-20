@@ -97,6 +97,6 @@ class EmailUser(AbstractBaseUser, PermissionsMixin):
 
 
 class PasswordReset(models.Model):
-    user = models.OneToOneField(EmailUser, related_name="profile")
+    user = models.OneToOneField(EmailUser, related_name="profile", on_delete=models.CASCADE)
     key = models.CharField(max_length=100)
     used = models.BooleanField(default=False)
